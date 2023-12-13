@@ -52,7 +52,7 @@ def get_parser():
     parser.add_argument('--model', default=18, type=str)
     parser.add_argument('--test_limit', default=50, type=int)
     parser.add_argument('--extd', default=50, type=int)
-    parser.add_argument('--save_path', default='../../../../../gputemp/ToWZP/CAM_CC', type=str)
+    parser.add_argument('--save_path', default='../CAM_CC', type=str)
     parser.add_argument('--local_rank', type=int, default=0)
     parser.add_argument('--init_method', type=str)
     
@@ -530,10 +530,10 @@ if __name__ == '__main__':
                                 cam = cv2.applyColorMap(np.uint8(255*cam), cv2.COLORMAP_JET)
 
                                 heatmap = cam*0.6 + img * 0.4
-#                                 heatmap = np.vstack((heatmap, img))    # 热图在上
-#                                 heatmap = np.hstack((heatmap, img))    # 热图在左
-#                                 heatmap = np.vstack((img, heatmap))    # 热图在下
-                                heatmap = np.hstack((img, heatmap))    # 热图在右
+#                                 heatmap = np.vstack((heatmap, img))    # Top
+#                                 heatmap = np.hstack((heatmap, img))    # Left
+#                                 heatmap = np.vstack((img, heatmap))    # Bottom
+                                heatmap = np.hstack((img, heatmap))    # Right
 
                                 file_name = '{}_CAM.jpeg'.format(os.path.basename(path[i]).split('.')[0])
                                 cv2.imwrite(f'{args.save_path}/CAM_{args.fold}/{ptid}/{slide}/{file_name}', heatmap)
