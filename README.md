@@ -14,9 +14,10 @@ There are two parts of the code:
 ![patches images](https://github.com/PRAETORIANCOHORT/CC_AI/tree/main/images/img2.png "patches images")
 2. Running MILTrain.py in main scripts to train the model. In the training process, the model will sample clusters of patches with spatial relationship, in order to 'zoom up' the view of the model:
 ![patch-clusters images](https://github.com/PRAETORIANCOHORT/CC_AI/tree/main/images/img1.png "patch-clusters images")
-3. Using Multiple-instance learning (MIL) to train our model on patch-clusters.
-4. Testing the model with MILTest.py
-5. Getting hotmap visualization with script MILHotmap_df.py
+3. Use Multiple-instance learning (MIL) to train our model on patch-clusters.
+4. Test the model with MILTest.py
+5. Get hotmap visualization with script MILHotmap_df.py
+6. Get Class Activation Map (CAM) with script CAM_all.py
 
    
    
