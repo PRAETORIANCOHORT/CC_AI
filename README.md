@@ -12,8 +12,8 @@ There are two parts of the code:
 
 1. After we input a WSI of the patient, we need to cut the WSIs into 512*512 pixel patches under 10X
 2. Running MILTrain.py in main scripts to train the model
-(1) In the training process, the model will sample
-(2) ddd
+   (1) In the training process, the model will sample
+   (2) ddd
 
    
    
