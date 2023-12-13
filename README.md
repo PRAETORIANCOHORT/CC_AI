@@ -1,6 +1,10 @@
 # CC_AI
 
-## This is a deep-learning based 
+## Model background
+
+This is a deep learning model based on WSIs to predict the 5-year recurrence risk of colorectal cancer patients
+
+## Workflow of the model
 
 There are two parts of the code
 
