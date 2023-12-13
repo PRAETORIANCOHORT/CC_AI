@@ -1,5 +1,5 @@
 # CC_AI
-There are three part of the code
+There are two parts of the code
 
 The main scripts part: our model
 
