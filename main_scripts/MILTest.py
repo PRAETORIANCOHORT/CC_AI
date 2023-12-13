@@ -435,11 +435,9 @@ if __name__ == '__main__':
         
     pat_slide_all = pd.read_excel('pat_slide_all.xlsx')
     test_path = {
-        'train': '../Wengweixiang/patches/',
-        'valid': '../Wengweixiang/patches/',
-        'sysucc': '../Wengweixiang/patches_sysucc_20/',
-        'sysmh': '../Wengweixiang/patches_FAHSYSU-20slide-test/',
-        'sd': '../Wengweixiang/patches_SD-20slide-all/'
+        'train': '../train/',
+        'valid': '../valid/',
+        'test': '../test/'
                 }
         
     torch.backends.cudnn.benchmark = True
@@ -457,10 +455,10 @@ if __name__ == '__main__':
     
     model = amp.initialize(model,opt_level="O0", keep_batchnorm_fp32=None)
     model = DistributedDataParallel(model, delay_allreduce=True)
-    
-#     for option in ['valid', 'sysucc', 'sysmh', 'sd']:
-#     for option in ['train', 'valid']:
+
+    # option = 'train'
     option = 'valid'
+    # option = 'test'
 
     if option == 'valid' or option == 'train' or option == 'trainval':
         pat_slide_all = pd.read_excel('pat_slide_all.xlsx')
