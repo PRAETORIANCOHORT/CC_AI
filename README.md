@@ -11,6 +11,8 @@ There are two parts of the code:
 ## Workflow of the model
 
 1. After we input a WSI of the patient, we need to cut the WSIs into 512*512 pixel patches under 10X
-2. Running 
+2. Running MILTrain.py in main scripts to train the model
+   2.1. In the training process, the model will sample
+   
 
 
