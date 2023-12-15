@@ -30,9 +30,16 @@ This is a deep learning model based on WSIs to predict the 5-year recurrence ris
 11. extd: The number of patches in a cluster other than the central patch, default=11
 12. device: The ID of GPU device, default='0,1,2,3,4,5,6,7'
 13. comment: Comment files, default='comment'
-14. model: Feature extractor model name, default='inceptionv3'
+14. model: The feature extractor model name, default='inceptionv3'
 
-   
+## Testing arguments
+
+1. path_simc: The path of patches
+2. model_id: The name of model to test
+3. epo: The epoch of the model that we want to test
+4. mag: Magnification of testing model
+5. model: The feature extractor of testing model
+6. extd: The number of patches in a cluster other than the central patch
    
 
 
