@@ -18,6 +18,7 @@ This is a deep learning model based on WSIs to predict the 5-year recurrence ris
 ## Training arguments
 
 --path: The path of patches
+
 --model_id: The name of model
 --epochs: The number of epochs, default=100
 --mag: Magnification of patches, default='10'
