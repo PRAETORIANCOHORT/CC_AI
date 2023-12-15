@@ -20,17 +20,29 @@ This is a deep learning model based on WSIs to predict the 5-year recurrence ris
 --path: The path of patches
 
 --model_id: The name of model
+
 --epochs: The number of epochs, default=100
+
 --mag: Magnification of patches, default='10'
+
 --lr: Initial learning rate, default=0.0002
+
 --momentum: Momentum, default=0.90
+
 --weight_decay: Weight_decay, default=1e-4
+
 --lrdrop: lrdrop, default=50
+
 --padding: The number of training clusters, default=4
+
 --test_limit: The number of testing clusters, default=50
+
 --extd: The number of patches in a cluster other than the central patch, default=11
+
 --device: The ID of GPU device, default='0,1,2,3,4,5,6,7'
+
 --comment: Comment files, default='comment'
+
 --model: Feature extractor model name, default='inceptionv3'
 
    
