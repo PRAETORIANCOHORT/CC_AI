@@ -414,7 +414,7 @@ def save_roc(ture, pred, imgn):
 def get_parser():
     parser = argparse.ArgumentParser(description='PyTorch Implementation of multiple Instance learning')
     parser.add_argument('--mag', default='10', type=str)
-    parser.add_argument('--model_name', default='All', type=str)
+    parser.add_argument('--model_id', default='All', type=str)
     parser.add_argument('--path_simc', default='/data_path/', type=str)
     parser.add_argument('--epo', default='5', type=str)
     parser.add_argument('--model', default='inceptionv3', type=str)
