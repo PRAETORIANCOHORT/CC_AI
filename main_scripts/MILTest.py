@@ -431,7 +431,7 @@ if __name__ == '__main__':
         data_map = json.load(f)
         
     save_file = datetime.datetime.strftime(datetime.datetime.now(),'%Y-%m-%d-%H-%M-%S')
-    os.mkdir(f'./{save_file}_{args.model_name}_X{args.mag}/')
+    os.mkdir(f'./{save_file}_{args.model_id}_X{args.mag}/')
         
     pat_slide_all = pd.read_excel('pat_slide_all.xlsx')
     test_path = {
@@ -465,7 +465,7 @@ if __name__ == '__main__':
         avlb_slide = os.listdir(test_path[option])
         avlb_slide_df = pat_slide_all[pat_slide_all['slide'].isin(avlb_slide)]
         all_id_list = list(set(avlb_slide_df['pat'].tolist()))
-        random.seed(int(args.model_name.split('_')[1]))
+        random.seed(int(args.model_id.split('_')[1]))
         random.shuffle(all_id_list)
         F0_valid_pat = all_id_list[int(0.8*len(all_id_list)):]
         KF_all_id = list(set(all_id_list)-set(F0_valid_pat))
@@ -481,7 +481,7 @@ if __name__ == '__main__':
             ])
 
     for fd in range(5):
-        os.mkdir(f'./{save_file}_{args.model_name}_X{args.mag}/F{fd}/')
+        os.mkdir(f'./{save_file}_{args.model_id}_X{args.mag}/F{fd}/')
         if option == 'train':
             valid_pat = KF_all_id[int(0.2*len(KF_all_id)*fd):int(0.2*len(KF_all_id)*(fd+1))]
             train_pat = list(set(KF_all_id)-set(valid_pat))
@@ -563,7 +563,7 @@ if __name__ == '__main__':
         mg = args.mag.split('_')[0]
 #         epo = args.epo
         print('-'*30)
-        epomax = np.max([int(i.split('.')[0]) for i in os.listdir(f'./checkpoints_{mg}X_{args.model_name}_F{fd}/comment/') if i[-2:]=='pt'])+1
+        epomax = np.max([int(i.split('.')[0]) for i in os.listdir(f'./checkpoints_{mg}X_{args.model_id}_F{fd}/comment/') if i[-2:]=='pt'])+1
 
         EpochList = []
         PatAucMinList = []
@@ -573,9 +573,9 @@ if __name__ == '__main__':
         for epoch in range(1, epomax):
             epo = str(epoch)
 
-            model.load_state_dict(torch.load(f'./checkpoints_{mg}X_{args.model_name}_F{fd}/comment/{epo}.pt'))
+            model.load_state_dict(torch.load(f'./checkpoints_{mg}X_{args.model_id}_F{fd}/comment/{epo}.pt'))
             print(f'Testing: Mag-{mg}X-Epo{epo}')
-            print(f'Model: {option}-X{mg}-{args.model_name}-{epo}')
+            print(f'Model: {option}-X{mg}-{args.model_id}-{epo}')
             print('-'*30)
 
             all_labels, all_values = eval_model(args, eval_loader, model)
@@ -588,7 +588,7 @@ if __name__ == '__main__':
                     'Label':all_labels,
                     'Value':all_values
                 })
-                result.to_csv(f'./{save_file}_{args.model_name}_X{args.mag}/F{fd}/result-{option}-X{args.mag}-{epo}.csv')
+                result.to_csv(f'./{save_file}_{args.model_id}_X{args.mag}/F{fd}/result-{option}-X{args.mag}-{epo}.csv')
 
 #                 result = pd.read_csv(f'./2022-06-20-09-24-15_20226666KF_299_inveptionv3_X10/F{fd}/result-{option}-X{args.mag}-{epo}.csv')
 
@@ -632,8 +632,8 @@ if __name__ == '__main__':
             f'{option}AucMax': PatAucMaxList,
             f'{option}AucMin': PatAucMinList})
 
-        RESULTS_DF.to_excel(f'./{save_file}_{args.model_name}_X{args.mag}/{option}_F{fd}_epochs_detail.xlsx', index=None)
+        RESULTS_DF.to_excel(f'./{save_file}_{args.model_id}_X{args.mag}/{option}_F{fd}_epochs_detail.xlsx', index=None)
 
         test_dataframe = pd.DataFrame({'test_label': test_label})
-        test_dataframe.to_excel(f'./{save_file}_{args.model_name}_X{args.mag}/test_label_{option}_F{fd}.xlsx', index=None)
+        test_dataframe.to_excel(f'./{save_file}_{args.model_id}_X{args.mag}/test_label_{option}_F{fd}.xlsx', index=None)
         
